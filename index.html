@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Hacking Simulator - Larger Version</title>
+    <style>
+        /* Enhanced styling for larger elements */
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 50px; /* Increased padding for more space */
+            font-size: 20px; /* Larger base font size */
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 1200px; /* Wider container for larger display */
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 20px 40px; /* Larger button padding */
+            border: none;
+            cursor: pointer;
+            font-size: 24px; /* Bigger button text */
+            margin-top: 50px; /* More space above */
+        }
+        .code-display {
+            background-color: #111;
+            padding: 40px; /* Larger padding for code area */
+            border: 2px solid lime; /* Thicker border */
+            margin-top: 40px; /* More space above */
+            white-space: pre-wrap;
+            overflow: auto;
+            font-size: 18px; /* Larger code font */
+            line-height: 1.8; /* Improved readability */
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            font-size: 28px; /* Even larger warning text */
+            margin-top: 40px; /* More space */
+        }
+        .hacked-message {
+            color: red;
+            font-size: 36px; /* Much larger hacked message */
+            margin-top: 40px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 48px;">Welcome to the Hacking Simulator</h1> <!-- Larger heading -->
+        <p style="font-size: 24px;">This is a demonstration. Click the button to start... if you dare!</p>
+        <button class="button" onclick="startHack()">Start Hacking</button>
+        
+        <div id="code-display" class="code-display" style="display: none;"></div>
+        <div id="warning" class="warning" style="display: none;">Warning: Unauthorized access detected! Your system is being compromised...</div>
+        <div id="hacked-message" class="hacked-message" style="display: none;">YOU HAVE BEEN HACKED!</div>
+    </div>
+
+    <script>
+        function startHack() {
+            document.querySelector('.button').style.display = 'none';  // Hide button
+            document.getElementById('code-display').style.display = 'block';
+            document.getElementById('warning').style.display = 'block';
+            
+            const fakeCode = `
+                Initializing hack sequence...
+                Connecting to target IP: 192.168.1.1
+                Bypassing firewall... Success!
+                Accessing user files...
+                Extracting data: documents, photos, passwords...
+                Uploading to server...
+                Hack complete. Data compromised.
+            `;
+            
+            const codeElement = document.getElementById('code-display');
+            let i = 0;
+            function typeWriter() {
+                if (i < fakeCode.length) {
+                    codeElement.innerHTML += fakeCode.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);  // Typing speed
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('hacked-message').style.display = 'block';
+                    }, 2000);  // Delay for effect
+                }
+            }
+            typeWriter();
+        }
+    </script>
+</body>
+</html>
